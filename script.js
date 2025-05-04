@@ -311,7 +311,28 @@ function loadLocalStorage() {
 document.addEventListener("DOMContentLoaded", mainStart);
 
 function mainStart() {
-  document.querySelector(".categories").children[0].classList.add("active_category");
+  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).nameCategory !== undefined) {
+    //проверяем категорию в localStorage
+    let localNameCategory = JSON.parse(localStorage.getItem("jsonData")).nameCategory;
+    if (localNameCategory.includes("&")) {
+      localNameCategory = localNameCategory.replace("&", " & ");
+    }
+
+    document.querySelectorAll(".categories-name").forEach(function (element, index) {
+      // если есть то нахдим такой же текст в категориях и делаем его активным
+      if (localNameCategory === element.textContent) {
+        element.classList.add("active_category");
+      }
+    });
+  } else {
+    // если нет, то делаем указанную по умолчанию категорию активной (без знаков аперсанда и т.д.)
+    document.querySelectorAll(".categories-name").forEach(function (element, index) {
+      if (nameCategory === element.textContent) {
+        element.classList.add("active_category");
+      }
+    });
+  }
+
   initSlider();
 
   if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).books !== null) {
@@ -357,7 +378,7 @@ function mainStart() {
       loadBooks(); //передаем в функцию загрузки
     }
 
-    if (event.target.classList.contains("load_more")) {
+    if (event.target.classList.contains("load-more")) {
       //нажимаем на загрузить еще
       page = page + 6;
       jsonData.page = `${page}`;
