@@ -12,10 +12,14 @@ header {
   justify-content: space-around;
   align-items: center;
 
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 2;
   background-color: #ffffff;
+}
+
+main {
+  margin-top: 116px;
 }
 
 .logo {
@@ -171,10 +175,7 @@ header {
   height: 710px;
   background-color: #efeef6;
   margin-top: 105px;
-}
 
-.categories_names {
-  display: flex;
   flex-direction: column;
   gap: 23px;
 }
@@ -201,7 +202,7 @@ header {
   transition: color 0.4s, font-size 0.4s, font-weight 0.4s, line-height 1s;
 }
 
-.categories .categories_names span::before {
+.categories span::before {
   content: "";
   position: absolute;
   bottom: 5px;
@@ -214,64 +215,26 @@ header {
   transition: opacity 0.4s ease;
 }
 
-.categories .categories_names span:hover::before {
+.categories span:hover::before {
   opacity: 1;
 }
 
 .books {
-  display: grid;
-
-  /* grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr; */
-  column-gap: 76px;
-  row-gap: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
   width: 924px;
   margin-top: 151px;
   position: absolute;
   left: 356px;
 }
 
-#item-0 {
-  grid-row-start: 1;
-  grid-column-start: 1;
-
-  grid-row-end: 2;
-  grid-column-end: 2;
-}
-#item-1 {
-  grid-row-start: 1;
-  grid-column-start: 2;
-
-  grid-row-end: 2;
-  grid-column-end: 3;
-}
-#item-2 {
-  grid-row-start: 2;
-  grid-column-start: 1;
-
-  grid-row-end: 3;
-  grid-column-end: 2;
-}
-#item-3 {
-  grid-row-start: 2;
-  grid-column-start: 2;
-
-  grid-row-end: 3;
-  grid-column-end: 3;
-}
-#item-4 {
-  grid-row-start: 3;
-  grid-column-start: 1;
-
-  grid-row-end: 4;
-  grid-column-end: 2;
-}
-#item-5 {
-  grid-row-start: 3;
-  grid-column-start: 2;
-
-  grid-row-end: 4;
-  grid-column-end: 3;
+.books-list {
+  display: grid;
+  column-gap: 76px;
+  row-gap: 96px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .items {
@@ -367,13 +330,9 @@ header {
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
-
   letter-spacing: 0%;
   text-transform: capitalize;
 
-  /* max-height: 300%;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   -webkit-line-clamp: 3; /* Число отображаемых строк */
   display: -webkit-box; /* Включаем флексбоксы */
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
@@ -413,11 +372,31 @@ header {
   opacity: 1 !important;
 }
 
-#item-6 {
-  grid-row-start: 4;
-  grid-column-start: 1;
-
-  grid-row-end: 5;
-  grid-column-end: 3;
+.load-more {
   margin: 0px auto 74px auto;
+}
+
+.circle {
+  display: none;
+  position: absolute;
+  background-color: #ff353a;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  top: 10px;
+  left: 113px;
+
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+
+  letter-spacing: 0%;
+  text-transform: capitalize;
+}
+
+.icons:last-child {
+  position: relative;
 }
