@@ -1,6 +1,3 @@
-let nameCategory = "Architecture";
-let page = 0;
-let countBuyBooks = 0;
 const booksList = document.querySelector(".books-list");
 const divCircle = document.querySelector(".circle");
 
@@ -11,6 +8,11 @@ if (localStorage.getItem("jsonData") !== null) {
   jsonData = {};
   jsonData.books = [];
 }
+let nameCategory = "Architecture";
+jsonData.nameCategory = nameCategory;
+let page = 0;
+jsonData.page = page;
+let countBuyBooks = 0;
 
 function initSlider() {
   let images = [
@@ -36,14 +38,20 @@ function initSlider() {
   function initImages() {
     //делает активным класс одной из картинки
     images.forEach((image, index) => {
-      let imageDiv = `<div class="image n${index} ${index === 0 ? "active" : ""}" style="background-image:url(${images[index].url});" data-index="${index}"></div>`;
+      let imageDiv = `<div class="image n${index} ${
+        index === 0 ? "active" : ""
+      }" style="background-image:url(${
+        images[index].url
+      });" data-index="${index}"></div>`;
       sliderImages.innerHTML += imageDiv;
     });
   }
 
   function initDots() {
     images.forEach((image, index) => {
-      let dot = `<div class="slider_dots-item n${index} ${index === 0 ? "active" : ""}" data-index="${index}"></div>`;
+      let dot = `<div class="slider_dots-item n${index} ${
+        index === 0 ? "active" : ""
+      }" data-index="${index}"></div>`;
       sliderDots.innerHTML += dot;
     });
     sliderDots.querySelectorAll(".slider_dots-item").forEach((dot) => {
@@ -69,7 +77,8 @@ async function loadBooks() {
 
   let response = await fetch(url);
   let data = await response.json();
-
+  console.log(url);
+  console.log(data.items);
   data.items.forEach(function (element, index) {
     jsonData.books.push({});
 
@@ -178,7 +187,6 @@ async function loadBooks() {
 
     if (saleInfo !== undefined) {
       divSaleInfo.innerText = saleInfo.currencyCode + saleInfo.amount;
-      // jsonData.books[indexBookJson].saleInfo = `${saleInfo}`;
       jsonData.books[indexBookJson].saleInfo = [];
       jsonData.books[indexBookJson].saleInfo.push(`${saleInfo.currencyCode}`);
       jsonData.books[indexBookJson].saleInfo.push(`${saleInfo.amount}`);
@@ -284,7 +292,6 @@ function loadLocalStorage() {
     }
 
     divAuthor.innerText = authors;
-
     divTitle.innerText = title;
 
     if (averageRating !== undefined && ratingCount !== undefined) {
@@ -311,50 +318,74 @@ function loadLocalStorage() {
 document.addEventListener("DOMContentLoaded", mainStart);
 
 function mainStart() {
-  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).nameCategory !== undefined) {
+  console.log(nameCategory);
+  if (
+    localStorage.getItem("jsonData") !== null &&
+    JSON.parse(localStorage.getItem("jsonData")).nameCategory !== undefined
+  ) {
     //проверяем категорию в localStorage
-    let localNameCategory = JSON.parse(localStorage.getItem("jsonData")).nameCategory;
+    let localNameCategory = JSON.parse(
+      localStorage.getItem("jsonData")
+    ).nameCategory;
     if (localNameCategory.includes("&")) {
       localNameCategory = localNameCategory.replace("&", " & ");
     }
 
-    document.querySelectorAll(".categories-name").forEach(function (element, index) {
-      // если есть то нахдим такой же текст в категориях и делаем его активным
-      if (localNameCategory === element.textContent) {
-        element.classList.add("active_category");
-      }
-    });
+    document
+      .querySelectorAll(".categories-name")
+      .forEach(function (element, index) {
+        // если есть то нахдим такой же текст в категориях и делаем его активным
+        if (localNameCategory === element.textContent) {
+          element.classList.add("active_category");
+        }
+      });
   } else {
     // если нет, то делаем указанную по умолчанию категорию активной (без знаков аперсанда и т.д.)
-    document.querySelectorAll(".categories-name").forEach(function (element, index) {
-      if (nameCategory === element.textContent) {
-        element.classList.add("active_category");
-      }
-    });
+    document
+      .querySelectorAll(".categories-name")
+      .forEach(function (element, index) {
+        if (nameCategory === element.textContent) {
+          element.classList.add("active_category");
+        }
+      });
   }
 
   initSlider();
 
-  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).books !== null) {
+  if (
+    localStorage.getItem("jsonData") !== null &&
+    JSON.parse(localStorage.getItem("jsonData")).books !== null
+  ) {
     // если в localStorage есть книги, то подгружаем из localStorage, иначе загружаем из API
     loadLocalStorage();
   } else {
     loadBooks();
   }
 
-  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).nameCategory !== null) {
+  if (
+    localStorage.getItem("jsonData") !== null &&
+    JSON.parse(localStorage.getItem("jsonData")).nameCategory !== null
+  ) {
     //категория в localStorage
     nameCategory = JSON.parse(localStorage.getItem("jsonData")).nameCategory;
   }
 
-  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).page !== null) {
+  if (
+    localStorage.getItem("jsonData") !== null &&
+    JSON.parse(localStorage.getItem("jsonData")).page !== null
+  ) {
     //страница в localStorage
     page = parseInt(JSON.parse(localStorage.getItem("jsonData")).page);
   }
 
-  if (localStorage.getItem("jsonData") !== null && JSON.parse(localStorage.getItem("jsonData")).countBuyBooks !== null) {
+  if (
+    localStorage.getItem("jsonData") !== null &&
+    JSON.parse(localStorage.getItem("jsonData")).countBuyBooks !== undefined
+  ) {
     //число купленных книг в localStorage
-    countBuyBooks = parseInt(JSON.parse(localStorage.getItem("jsonData")).countBuyBooks);
+    countBuyBooks = parseInt(
+      JSON.parse(localStorage.getItem("jsonData")).countBuyBooks
+    );
     divCircle.style.display = "flex";
     divCircle.innerText = countBuyBooks;
   }
@@ -368,7 +399,9 @@ function mainStart() {
       localStorage.setItem("jsonData", JSON.stringify(jsonData));
 
       booksList.innerHTML = "";
-      document.querySelector(".categories-name.active_category").classList.remove("active_category");
+      document
+        .querySelector(".categories-name.active_category")
+        .classList.remove("active_category");
       event.target.classList.add("active_category");
 
       nameCategory = event.target.textContent.replaceAll(" ", "");
