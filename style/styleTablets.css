@@ -170,6 +170,7 @@ main {
   /* flex-direction: column; */
   align-items: center;
   height: 50px;
+  margin-top: -17px;
 }
 
 .change_book a,
@@ -198,7 +199,6 @@ main {
 
 .categories {
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
 
@@ -208,6 +208,7 @@ main {
   margin-top: 10px;
 
   gap: 5px;
+  overflow-x: auto;
 }
 
 .categories span {
@@ -221,9 +222,10 @@ main {
   text-transform: capitalize;
   transition: all ease 0.4s;
   position: relative;
-  padding: 5px;
+  padding: 40px;
   border: 2px solid #9e98dc;
-  border-radius: 30px;
+  white-space: nowrap;
+  /* border-radius: 30px; */
 }
 
 .categories span:hover {
@@ -236,7 +238,7 @@ main {
 }
 
 .categories span::before {
-  content: "";
+  /* content: "";
   position: absolute;
   bottom: 5px;
   width: 6px;
@@ -245,11 +247,11 @@ main {
   background: #756ad3;
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; */
 }
 
 .categories span:hover::before {
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 /* Книги */
@@ -257,24 +259,27 @@ main {
   display: flex;
   flex-direction: column;
   gap: 96px;
-  width: 924px;
-  margin-top: 151px;
+  width: 100%;
+  margin-top: 20px;
   /* position: absolute;
   left: 356px; */
 }
 
 .books-list {
-  display: grid;
+  /* display: grid;
   column-gap: 76px;
   row-gap: 96px;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .items {
   display: flex;
   flex-flow: row nowrap;
-  width: 424px;
+  width: 100%;
   height: 300px;
 }
 
@@ -318,6 +323,7 @@ main {
   flex-direction: column;
   padding-top: 49px;
   padding-left: 36px;
+  padding-right: 36px;
   gap: 16px;
 }
 
@@ -393,17 +399,17 @@ main {
 }
 
 .categories .active_category {
-  font-weight: 700;
-  font-size: 16px;
+  /* font-weight: 700;
+  font-size: 16px; */
   color: #1c2a39;
-
+  border: 3px solid #9e98dc;
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: capitalize;
 }
 
 .categories .active_category::before {
-  opacity: 1 !important;
+  /* opacity: 1 !important; */
 }
 
 .load-more {
