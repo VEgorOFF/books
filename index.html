@@ -3,9 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Yeseva+One&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Yeseva+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 801px)"
+      href="style\style.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 321px) and (max-width: 800px)"
+      href="style\styleTablets.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 320px)"
+      href="style\styleMobile.css"
+    />
     <title>Bookshop</title>
   </head>
   <body>
@@ -20,7 +36,11 @@
       <div class="icons">
         <a href=""><img src="img\user.png" alt="user" /></a>
         <a href=""><img src="img\search.png" alt="search" /></a>
-        <a href=""><img src="img\shop bag.png" alt="shop bag" /><span class="circle"></span></a>
+        <a href=""
+          ><img src="img\shop bag.png" alt="shop bag" /><span
+            class="circle"
+          ></span
+        ></a>
       </div>
     </header>
     <main>
@@ -28,17 +48,34 @@
         <div class="slider_images"></div>
         <div class="slider_dots"></div>
         <div class="change_book">
-          <a href="">Change old book on new<img src="img\arrow.png" alt="arrow" /></a>
+          <a href=""
+            >Change old book on new<img src="img\arrow.png" alt="arrow"
+          /></a>
         </div>
         <div class="top_book">
-          <a href="">top 100 books 2022<img src="img\arrow.png" alt="arrow" /></a>
+          <a href=""
+            >top 100 books 2022<img src="img\arrow.png" alt="arrow"
+          /></a>
         </div>
       </div>
       <div class="categories_and_books">
         <div class="categories">
-          <span class="categories-name">Architecture</span><span class="categories-name">Art & Fashion</span><span class="categories-name">Biography</span><span class="categories-name">Business</span><span class="categories-name">Crafts & Hobbies</span><span class="categories-name">Drama</span
-          ><span class="categories-name">Fiction</span><span class="categories-name">Food & Drink</span><span class="categories-name">Health & Wellbeing</span><span class="categories-name">History & Politics</span><span class="categories-name">Humor</span><span class="categories-name">Poetry</span
-          ><span class="categories-name">Psychology</span><span class="categories-name">Science</span><span class="categories-name">Technology</span><span class="categories-name">Travel & Maps</span>
+          <span class="categories-name">Architecture</span
+          ><span class="categories-name">Art & Fashion</span
+          ><span class="categories-name">Biography</span
+          ><span class="categories-name">Business</span
+          ><span class="categories-name">Crafts & Hobbies</span
+          ><span class="categories-name">Drama</span
+          ><span class="categories-name">Fiction</span
+          ><span class="categories-name">Food & Drink</span
+          ><span class="categories-name">Health & Wellbeing</span
+          ><span class="categories-name">History & Politics</span
+          ><span class="categories-name">Humor</span
+          ><span class="categories-name">Poetry</span
+          ><span class="categories-name">Psychology</span
+          ><span class="categories-name">Science</span
+          ><span class="categories-name">Technology</span
+          ><span class="categories-name">Travel & Maps</span>
         </div>
         <div class="books">
           <div class="books-list"></div>
@@ -46,6 +83,6 @@
         </div>
       </div>
     </main>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
