@@ -2,11 +2,18 @@ import { fillStars } from "./fillStars.js";
 import { nameCategory, page, jsonData, booksList } from "../script.js";
 
 async function loadBooks() {
+  // Получаем ссылку на индикатор загрузки
+  const loadingIndicator = document.getElementById("loading-indicator");
+  // Добавляем индикатор загрузки до загрузки скрипта
+  loadingIndicator.style.width = "100px";
+  loadingIndicator.style.margin = "0 auto";
+  loadingIndicator.style.display = "flex";
+
   //загрузка книг с API
   const url = `https://www.googleapis.com/books/v1/volumes?q=%22subject:${nameCategory}%22&key=AIzaSyCltJSGvWItPOc-8e4Tp_vYsenGe86IMaM&printType=books&startIndex=${page}&maxResults=6&langRestrict=en`;
-
   let response = await fetch(url);
   let data = await response.json();
+  loadingIndicator.style.display = "none"; // Скрываем индикатор загрузки
   data.items.forEach(function (element, index) {
     jsonData.books.push({});
 
